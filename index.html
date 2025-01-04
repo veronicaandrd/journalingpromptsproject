@@ -1,11 +1,117 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>Journaling Prompts Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/x-icon" src="assets/favicon.ico"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<title>A prompt a day.</title>
 </head>
+
 <body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+<div class="header-div"> 
+<h2 class="inter-regular">Saturday, Jan 4</h2>
+<img class="avatar" src="assets/avatar.png">
+</div>
+
+<div> 
+
+<div class="test">
+<img class="thumbnail" src="assets/icon01.png">
+<button type="button" class="collapsible active">01  Daily journaling</button>
+<div class="content">
+  <p>What are some small things that other people have done that really made your day?</p>
+  
+  <div class="actionbar">
+  <button class="primary">Copy</button> 
+  <button class="primary">Share</button> 
+  </div>
+
+</div>
+</div>
+
+
+<div class="test">
+<img class="thumbnail" src="assets/icon02.png">
+<button type="button" class="collapsible">02  Gratitude journaling</button>
+<div class="content">
+  <p>Write a letter to your own body, thanking it for something amazing it has done.</p>
+
+  <div class="actionbar">
+  <button class="primary">Copy</button> 
+  <button class="primary">Share</button> 
+  </div>
+
+</div>
+</div>
+
+
+<div class="test">
+<img class="thumbnail" src="assets/icon03.png">
+<button type="button" class="collapsible">03  Mindfulness journaling </button>
+<div class="content">
+  <p>Find two unrelated objects️ near you and think of a clever way they might be used together.</p>
+
+  <div class="actionbar">
+  <button class="primary">Copy</button> 
+  <button class="primary">Share</button> 
+  </div>
+
+</div>
+</div>
+
+
+<div class="test">
+<img class="thumbnail" src="assets/icon04.png">
+<button type="button" class="collapsible">04  Future-self journaling </button>
+<div class="content">
+  <p>What could you do to make your life more meaningful?</p>
+
+  <div class="actionbar">
+  <button class="primary">Copy</button> 
+  <button class="primary">Share</button> 
+  </div>
+
+</div>
+</div>
+
+
+<div class="card">
+
+  <p>Aqui vai ter uma mensagem para as pessoas compartilharem o site e tal. E lembrem-se: aceito críticas (mas não fico quieta). Beijo.</p>
+
+  <div class="actionbar">
+  <button class="primary">Share</button>
+  </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+const collapsible = document.getElementsByClassName("collapsible");
+
+for (let i = 0; i < collapsible.length; i++) {
+  collapsible[i].addEventListener("click", e => e.currentTarget.classList.toggle("active"));
+}
+</script>
+
+
+
+
+
+
 
 </body>
 </html>
