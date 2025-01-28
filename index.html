@@ -4,30 +4,29 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" type="image/x-icon" src="https://veronicaandrd.github.io/journalingpromptsproject/favicon.ico"/>
+<link rel="icon" type="image/x-icon" src="assets/favicon.ico"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<title>A prompt a day.</title>
 </head>
 
 <body>
 
 <div class="header-div"> 
-<h2 class="inter-regular">Saturday, Jan 4</h2>
-<img class="avatar" src="https://veronicaandrd.github.io/journalingpromptsproject/avatar.png">
+<h2 class="inter-regular"><span id="weekday"></span>, <span id="month"></span> <span id="dayOfMonth"></span></h2>
+<img class="avatar" src="assets/avatar.png">
 </div>
 
 <div> 
 
 <div class="test">
-<img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon01.png">
+<img class="thumbnail" src="assets/icon01.png">
 <button type="button" class="collapsible active">01  Daily journaling</button>
 <div class="content">
-  <p>What are some small things that other people have done that really made your day?</p>
+  <p id="prompt1">What are some small things that other people have done that really made your day?</p>
   
   <div class="actionbar">
-  <button class="primary">Copy</button> 
+  <button class="primary" onclick="copyContent('prompt1', this)">Copy</button>
   <button class="primary">Share</button> 
   </div>
 
@@ -36,13 +35,13 @@
 
 
 <div class="test">
-<img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon02.png">
+<img class="thumbnail" src="assets/icon02.png">
 <button type="button" class="collapsible">02  Gratitude journaling</button>
 <div class="content">
-  <p>Write a letter to your own body, thanking it for something amazing it has done.</p>
+  <p id="prompt2">Write a letter to your own body, thanking it for something amazing it has done.</p>
 
   <div class="actionbar">
-  <button class="primary">Copy</button> 
+  <button class="primary" onclick="copyContent('prompt2', this)">Copy</button>
   <button class="primary">Share</button> 
   </div>
 
@@ -51,13 +50,13 @@
 
 
 <div class="test">
-<img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon03.png">
+<img class="thumbnail" src="assets/icon03.png">
 <button type="button" class="collapsible">03  Mindfulness journaling </button>
 <div class="content">
-  <p>Find two unrelated objects️ near you and think of a clever way they might be used together.</p>
+  <p id="prompt3">Find two unrelated objects️ near you and think of a clever way they might be used together.</p>
 
   <div class="actionbar">
-  <button class="primary">Copy</button> 
+  <button class="primary" onclick="copyContent('prompt3', this)">Copy</button>
   <button class="primary">Share</button> 
   </div>
 
@@ -66,13 +65,13 @@
 
 
 <div class="test">
-<img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon04.png">
+<img class="thumbnail" src="assets/icon04.png">
 <button type="button" class="collapsible">04  Future-self journaling </button>
 <div class="content">
-  <p>What could you do to make your life more meaningful?</p>
+  <p id="prompt4">What could you do to make your life more meaningful?</p>
 
   <div class="actionbar">
-  <button class="primary">Copy</button> 
+  <button class="primary" onclick="copyContent('prompt4', this)">Copy</button>
   <button class="primary">Share</button> 
   </div>
 
@@ -82,7 +81,7 @@
 
 <div class="card">
 
-  <p>Aqui vai ter uma mensagem para as pessoas compartilharem o site e tal. E lembrem-se: aceito críticas (mas não fico quieta). Beijo.</p>
+  <p>Fusce erat ipsum, consectetur in laoreet vel, rutrum eget neque. Curabitur feugiat varius euismod. Nam in lectus a purus feugiat blandit. Sed accumsan metus libero, quis ultricies neque imperdiet in.</p>
 
   <div class="actionbar">
   <button class="primary">Share</button>
@@ -100,17 +99,47 @@
 
 
 <script>
-const collapsible = document.getElementsByClassName("collapsible");
+  // Wait for the DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", function() {
+    // Collapsible script
+    const collapsible = document.getElementsByClassName("collapsible");
+    for (let i = 0; i < collapsible.length; i++) {
+      collapsible[i].addEventListener("click", e => e.currentTarget.classList.toggle("active"));
+    }
 
-for (let i = 0; i < collapsible.length; i++) {
-  collapsible[i].addEventListener("click", e => e.currentTarget.classList.toggle("active"));
-}
+    // Get current day, month, and day of the month
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
+    const d = new Date();  // Create a new date object
+    
+    // Update the weekday, month, and day of the month
+    document.getElementById("weekday").innerHTML = days[d.getDay()];  // Day of the week
+    document.getElementById("month").innerHTML = months[d.getMonth()];  // Current month
+    document.getElementById("dayOfMonth").innerHTML = d.getDate();  // Day of the month (1 to 31)
+  });
 </script>
 
-
-
-
-
+<script>
+  const copyContent = async (elementId, button) => {
+    const text = document.getElementById(elementId).innerHTML;
+    try {
+      // Copy the text to clipboard
+      await navigator.clipboard.writeText(text);
+      console.log('Content copied to clipboard');
+      
+      // Change the button text to "Copied!"
+      button.innerHTML = "Copied!";
+      
+      // After 1 second, revert the button text back to the original
+      setTimeout(() => {
+        button.innerHTML = "Copy";  // Replace "Copy" with the initial label of the button
+      }, 1000);  // 1000ms = 1 second
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
+</script>
 
 
 </body>
