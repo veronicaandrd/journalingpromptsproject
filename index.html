@@ -22,7 +22,7 @@
 
 <div class="test">
 <img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon01.png">
-<button type="button" class="collapsible active">Reflective</button>
+<button type="button" class="collapsible active">Reflective journaling</button>
 <div class="content">
   <p id="prompt1"></p>  
 
@@ -37,14 +37,14 @@
 
 <div class="test">
 <img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon02.png">
-<button type="button" class="collapsible">Gratitude</button>
+<button type="button" class="collapsible">Gratitude journaling</button>
 <div class="content">
   <p id="prompt2">Write a letter to your own body, thanking it for something amazing it has done.</p>
 
   <div class="actionbar">
   <button class="primary" onclick="copyContent('prompt2', this)">Copy</button>
-  <button class="primary">Share</button> 
-  </div>
+  <button class="primary" id="refreshPrompt2">Refresh</button> 
+  </div> 
 
 </div>
 </div>
@@ -52,7 +52,7 @@
 
 <div class="test">
 <img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon03.png">
-<button type="button" class="collapsible">Mindfulness</button>
+<button type="button" class="collapsible">Mindfulness journaling</button>
 <div class="content">
   <p id="prompt3">Find two unrelated objects️ near you and think of a clever way they might be used together.</p>
 
@@ -67,7 +67,7 @@
 
 <div class="test">
 <img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon04.png">
-<button type="button" class="collapsible">Future-self</button>
+<button type="button" class="collapsible">Future-self journaling</button>
 <div class="content">
   <p id="prompt4">What could you do to make your life more meaningful?</p>
 
@@ -98,59 +98,50 @@
 
 
 <script>
-function displayRandomMessage() {
-            var prompt1 = [
-                "What are some small things that other people have done that really made your day?",
-                "Talk about a time that you are proud to have told someone 'no'.",
-                "Consider and reflect on what might be your 'favorite failure'.",
-                "How can you reframe one of your biggest regrets in life?",
-                "How did you bond with one of the best friends you've ever had?",
-                "How did your parents or caregivers try to influence or control your behavior when you were growing up?", 
-                "How do the opinions of others affect you?",
-                "How do you feel about asking for help?",
-                "Take a task that you've been dreading and break it up into the smallest possible steps.", 
-                "Think about a 'what if?' or worst-case scenario and work your way through the problem, identifying your options to get through it if it were to happen.",
-                "Think about the last time you cried. If those tears could talk, what would they have said?",
-                "What are some things that frustrate you? Can you find any values that explain why they bug you so much?",
-                "What did you learn from your last relationship? If you haven't had one, what could you learn from a relationship that you’ve observed?", 
-                "What do you need to give yourself more credit for?",
-                "What do you wish you could do more quickly? What do you wish you could do more slowly?",
-                "What does 'ready' feel like to you? How did you know you were ready for a major step that you have taken in your life?",
-                "What happens when you are angry?",
-                "What is a question that you are really scared to know the answer to?",
-                "What is a reminder that you would like to tell yourself next time you are in a downward spiral?",
-                "What is a view about the world that has changed for you as you've gotten older?",
-                "What is something that you have a hard time being honest about, even to those you trust the most? Why?",
-                "What life lessons, advice, or habits have you picked up from fiction books?",
-                "What part of your work do you most enjoy? What part do you least enjoy? Why?",
-                "What pet peeves do you have? Any idea why they drive you so crazy?",
-                "What sensations or experience do you tend to avoid in your life? Why?",
-                "What was a seemingly inconsequential decision that made a big impact in your life?",
-                "When was the last time you had to hold your tongue? What would you have said if you didn't have to?",
-                "Which emotions in others do you have a difficult time being around? Why?",
-                "Which quotes or pieces of advice do you have committed to memory? Why have those stuck with you?",
-                "Which songs have vivid memories for you?",
-                "Who is the most difficult person in your life and why?",
-                "Why do you dress the way that you do?",
-                "Write a letter to someone you miss dearly.",
-                "Write about a mistake that taught you something about yourself.",
-                "Write about something (or someone) that is currently tempting you.",
-                "You have been temporarily blinded by a bright light. When your vision clears, what do you see?"
-            ];
-
-            var randomIndex = Math.floor(Math.random() * prompt1.length);
-            var randomMessage = prompt1 [randomIndex];
-
-            var messageElement = document.getElementById("prompt1");
-            messageElement.innerHTML = randomMessage;
-        }
-
-        // Call the function when the page loads
-        window.onload = displayRandomMessage;
-
-        // Add event listener to the refresh button
-        document.getElementById("refreshPrompt").addEventListener("click", displayRandomMessage);
-</script>
+  function displayRandomMessage1() {
+      var prompt1 = [
+          "What are some small things that other people have done that really made your day?",
+          "Talk about a time that you are proud to have told someone 'no'.",
+          "Consider and reflect on what might be your 'favorite failure'.",
+          "How can you reframe one of your biggest regrets in life?",
+          "How did you bond with one of the best friends you've ever had?",
+          "How did your parents or caregivers try to influence or control your behavior when you were growing up?"
+      ];
+  
+      var randomIndex = Math.floor(Math.random() * prompt1.length);
+      var randomMessage1 = prompt1[randomIndex];
+  
+      var messageElement = document.getElementById("prompt1");
+      messageElement.innerHTML = randomMessage1;
+  }
+  
+  function displayRandomMessage2() {
+      var prompt2 = [
+          "Write a letter to your own body, thanking it for something amazing it has done.",
+          "Write a thank you note to someone. Sending is optional.",
+          "What is something that you grew out of that meant a lot to you at the time?",
+          "Who has been your greatest teacher?",
+          "Who is somebody that you miss? Why?", 
+          "Write about an aspect of your personality that you appreciate in other people as well."
+      ];
+  
+      var randomIndex = Math.floor(Math.random() * prompt2.length);
+      var randomMessage2 = prompt2[randomIndex];
+  
+      var messageElement = document.getElementById("prompt2");
+      messageElement.innerHTML = randomMessage2;
+  }
+  
+  // Call both functions when the page loads
+  window.onload = function() {
+      displayRandomMessage1();
+      displayRandomMessage2();
+  };
+  
+  // Add event listener to the refresh buttons
+  document.getElementById("refreshPrompt1").addEventListener("click", displayRandomMessage1);
+  document.getElementById("refreshPrompt2").addEventListener("click", displayRandomMessage2);
+</script> 
 
 
 
