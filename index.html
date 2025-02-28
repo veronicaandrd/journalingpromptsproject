@@ -58,7 +58,7 @@
 
   <div class="actionbar">
   <button class="primary" onclick="copyContent('prompt3', this)">Copy</button>
-  <button class="primary">Share</button> 
+  <button class="primary" id="refreshPrompt3">Refresh</button> 
   </div>
 
 </div>
@@ -161,16 +161,31 @@
       var messageElement = document.getElementById("prompt2");
       messageElement.innerHTML = randomMessage2;
   }
+
+    function displayRandomMessage3() {
+      var prompt3 = [
+          "Find two unrelated objects️ near you and think of a clever way they might be used together.",
+          "Write a complete story with just six words. For example: Turns out the pain was temporary."
+      ];
+  
+      var randomIndex = Math.floor(Math.random() * prompt3.length);
+      var randomMessage3 = prompt3[randomIndex];
+  
+      var messageElement = document.getElementById("prompt3");
+      messageElement.innerHTML = randomMessage3;
+  }
   
   // Call both functions when the page loads
   window.onload = function() {
       displayRandomMessage1();
       displayRandomMessage2();
+      displayRandomMessage3();
   };
   
   // Add event listener to the refresh buttons
   document.getElementById("refreshPrompt1").addEventListener("click", displayRandomMessage1);
   document.getElementById("refreshPrompt2").addEventListener("click", displayRandomMessage2);
+  document.getElementById("refreshPrompt3").addEventListener("click", displayRandomMessage3);
 </script> 
 
 
