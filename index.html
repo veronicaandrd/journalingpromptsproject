@@ -39,7 +39,7 @@
 <img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon02.png">
 <button type="button" class="collapsible">Gratitude journaling</button>
 <div class="content">
-  <p id="prompt2">Write a letter to your own body, thanking it for something amazing it has done.</p>
+  <p id="prompt2"></p>
 
   <div class="actionbar">
   <button class="primary" onclick="copyContent('prompt2', this)">Copy</button>
@@ -54,7 +54,7 @@
 <img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon03.png">
 <button type="button" class="collapsible">Mindfulness journaling</button>
 <div class="content">
-  <p id="prompt3">Find two unrelated objects️ near you and think of a clever way they might be used together.</p>
+  <p id="prompt3"></p>
 
   <div class="actionbar">
   <button class="primary" onclick="copyContent('prompt3', this)">Copy</button>
@@ -69,11 +69,11 @@
 <img class="thumbnail" src="https://veronicaandrd.github.io/journalingpromptsproject/icon04.png">
 <button type="button" class="collapsible">Future-self journaling</button>
 <div class="content">
-  <p id="prompt4">What could you do to make your life more meaningful?</p>
+  <p id="prompt4"></p>
 
   <div class="actionbar">
   <button class="primary" onclick="copyContent('prompt4', this)">Copy</button>
-  <button class="primary">Share</button> 
+  <button class="primary" id="refreshPrompt4">Refresh</button> 
   </div>
 
 </div>
@@ -174,18 +174,34 @@
       var messageElement = document.getElementById("prompt3");
       messageElement.innerHTML = randomMessage3;
   }
+
+  function displayRandomMessage4() {
+      var prompt4 = [
+          "What could you do to make your life more meaningful?",
+          "Are you taking enough risks in your life? Would you like to change your relationship to risk? If so, how?",
+          "Identify a bad habit you’d like to kick, and list three simple steps to help you succeed."
+      ];
+  
+      var randomIndex = Math.floor(Math.random() * prompt4.length);
+      var randomMessage4 = prompt4[randomIndex];
+  
+      var messageElement = document.getElementById("prompt4");
+      messageElement.innerHTML = randomMessage4;
+  }
   
   // Call both functions when the page loads
   window.onload = function() {
       displayRandomMessage1();
       displayRandomMessage2();
       displayRandomMessage3();
+      displayRandomMessage4();
   };
   
   // Add event listener to the refresh buttons
   document.getElementById("refreshPrompt1").addEventListener("click", displayRandomMessage1);
   document.getElementById("refreshPrompt2").addEventListener("click", displayRandomMessage2);
   document.getElementById("refreshPrompt3").addEventListener("click", displayRandomMessage3);
+  document.getElementById("refreshPrompt4").addEventListener("click", displayRandomMessage4);
 </script> 
 
 
